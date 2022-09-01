@@ -1,24 +1,49 @@
-package com.wiktor.smoko
+package com.wiktor.smoko.presentation
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.format.DateFormat.is24HourFormat
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
-import java.util.*
+import androidx.recyclerview.widget.RecyclerView
+import com.wiktor.smoko.R
+import com.wiktor.smoko.domain.MyTimer
+import com.wiktor.smoko.presentation.adapters.TimersAdapter
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textViewTime: TextView
-    private lateinit var buttonStart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val adapter = TimersAdapter()
+        adapter.onTimerClickListener = object : TimersAdapter.OnTimerClickListener {
+            override fun onTimerClick(timer: MyTimer) {
+                val intent = Intent(this@MainActivity, TimerDetailActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
+        val listOfTimers = mutableListOf<MyTimer>()
+        listOfTimers.add(MyTimer(name = "Timer1"))
+        listOfTimers.add(MyTimer(name = "Timer2"))
+        listOfTimers.add(MyTimer(name = "Timer3"))
+        listOfTimers.add(MyTimer(name = "Timer4"))
+        listOfTimers.add(MyTimer(name = "Timer5"))
+        listOfTimers.add(MyTimer(name = "Timer6"))
+        listOfTimers.add(MyTimer(name = "Timer7"))
+        listOfTimers.add(MyTimer(name = "Timer8"))
+
+
+        adapter.timersList = listOfTimers
+
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView_timers)
+        recyclerView.adapter = adapter
+
+
+/*
         textViewTime = findViewById(R.id.textView_time)
         textViewTime.text = "00:00"
         buttonStart = findViewById(R.id.button_start)
@@ -40,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 Calendar.getInstance().get(Calendar.HOUR).toString() + ":" + Calendar.getInstance()
                     .get(Calendar.MINUTE).toString()
         }
+*/
 
 
 //Calendar.getInstance().get(Calendar.YEAR)
@@ -64,4 +90,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }

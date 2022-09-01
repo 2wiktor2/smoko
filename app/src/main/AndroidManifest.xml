@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smoko">
         <activity
-            android:name=".TimerDetailActivity"
+            android:name=".TimerSettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.TimerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

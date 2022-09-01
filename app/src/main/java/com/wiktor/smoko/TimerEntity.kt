@@ -8,5 +8,5 @@ data class TimerEntity(
     val startInterval: String? = null,
     val incrementInterval: String? = null,
     val perPeriod: String? = null,
-    val notification: Boolean = false,
+    val notification: Boolean = false
 )

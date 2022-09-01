@@ -1,4 +1,4 @@
-package com.wiktor.smoko.database
+package com.wiktor.smoko.data.database
 
 import android.content.Context
 import androidx.room.Room
