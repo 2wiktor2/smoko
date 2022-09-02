@@ -2,38 +2,41 @@ package com.wiktor.smoko.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wiktor.smoko.R
 import com.wiktor.smoko.domain.MyTimer
 import com.wiktor.smoko.presentation.adapters.TimersAdapter
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var fab = findViewById<FloatingActionButton>(R.id.fab_new_timer)
+        fab.setOnClickListener(this)
+
         val adapter = TimersAdapter()
         adapter.onTimerClickListener = object : TimersAdapter.OnTimerClickListener {
             override fun onTimerClick(timer: MyTimer) {
-                val intent = Intent(this@MainActivity, TimerDetailActivity::class.java)
-                startActivity(intent)
+                startDetailActivity()
             }
-
         }
 
         val listOfTimers = mutableListOf<MyTimer>()
-        listOfTimers.add(MyTimer(name = "Timer1"))
+/*        listOfTimers.add(MyTimer(name = "Timer1"))
         listOfTimers.add(MyTimer(name = "Timer2"))
         listOfTimers.add(MyTimer(name = "Timer3"))
         listOfTimers.add(MyTimer(name = "Timer4"))
         listOfTimers.add(MyTimer(name = "Timer5"))
         listOfTimers.add(MyTimer(name = "Timer6"))
         listOfTimers.add(MyTimer(name = "Timer7"))
-        listOfTimers.add(MyTimer(name = "Timer8"))
+        listOfTimers.add(MyTimer(name = "Timer8"))*/
 
 
         adapter.timersList = listOfTimers
@@ -89,6 +92,17 @@ class MainActivity : AppCompatActivity() {
 */
 
 
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.fab_new_timer -> startDetailActivity()
+        }
+    }
+
+    private fun startDetailActivity() {
+        val intent = Intent(this@MainActivity, TimerDetailActivity::class.java)
+        startActivity(intent)
     }
 
 }
