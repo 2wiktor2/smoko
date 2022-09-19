@@ -14,6 +14,3 @@ class TimersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewInterval: TextView = itemView.findViewById(R.id.textView_interval)
 }
 
-interface OnTimerClickListener {
-    fun onTimerClick(timer: MyTimer)
-}
