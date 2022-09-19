@@ -1,9 +1,10 @@
 package com.wiktor.smoko.domain.useCases
 
+import androidx.lifecycle.LiveData
 import com.wiktor.smoko.data.database.MyTimerDbModel
 
 interface TimersRepository {
-    fun getTimersList(): List<MyTimerDbModel>
+    fun getTimersList():List<MyTimerDbModel>
     fun getTimer(timerId: Int): MyTimerDbModel
     fun addTimer(myTimerDbModel: MyTimerDbModel)
     fun editTimer(myTimerDbModel: MyTimerDbModel)

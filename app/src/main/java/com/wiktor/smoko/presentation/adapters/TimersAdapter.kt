@@ -4,14 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wiktor.smoko.R
 import com.wiktor.smoko.domain.MyTimer
+import com.wiktor.smoko.presentation.TimerItemDiffCallback
+import com.wiktor.smoko.presentation.TimersListDiffCallback
+import com.wiktor.smoko.presentation.TimersViewHolder
 
-class TimersAdapter : RecyclerView.Adapter<TimersAdapter.TimersViewHolder>() {
+class TimersAdapter : ListAdapter<MyTimer, TimersViewHolder>(TimerItemDiffCallback()) {
 
-    var timersList: List<MyTimer> = listOf()
-    var onTimerClickListener: OnTimerClickListener? = null
+   // var onTimerClickListener: OnTimerClickListener? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimersViewHolder {
         val view =
@@ -20,22 +25,18 @@ class TimersAdapter : RecyclerView.Adapter<TimersAdapter.TimersViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TimersViewHolder, position: Int) {
-        val timer = timersList.get(position)
+        val timer = getItem(position)
 
         holder.textViewName.text = timer.name
         holder.textViewCreatedDate.text = timer.created
         holder.textViewInterval.text = timer.startInterval
 
-        holder.itemView.setOnClickListener {
+/*        holder.itemView.setOnClickListener {
             onTimerClickListener?.onTimerClick(timer)
-        }
+        }*/
     }
 
-    override fun getItemCount(): Int {
-        return timersList.size
-    }
-
-    inner class TimersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+/*    inner class TimersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textViewName: TextView = itemView.findViewById(R.id.textView_name)
         val textViewTimer: TextView = itemView.findViewById(R.id.textView_timer)
@@ -45,5 +46,9 @@ class TimersAdapter : RecyclerView.Adapter<TimersAdapter.TimersViewHolder>() {
 
     interface OnTimerClickListener {
         fun onTimerClick(timer: MyTimer)
+    }*/
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 }

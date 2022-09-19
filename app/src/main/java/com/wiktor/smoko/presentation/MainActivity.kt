@@ -22,29 +22,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fab.setOnClickListener(this)
 
         val adapter = TimersAdapter()
-        adapter.onTimerClickListener = object : TimersAdapter.OnTimerClickListener {
+/*        adapter.onTimerClickListener = object : TimersAdapter.OnTimerClickListener {
             override fun onTimerClick(timer: MyTimer) {
                 startDetailActivity()
             }
-        }
+        }*/
 
         val listOfTimers = mutableListOf<MyTimer>()
-/*        listOfTimers.add(MyTimer(name = "Timer1"))
-        listOfTimers.add(MyTimer(name = "Timer2"))
-        listOfTimers.add(MyTimer(name = "Timer3"))
-        listOfTimers.add(MyTimer(name = "Timer4"))
-        listOfTimers.add(MyTimer(name = "Timer5"))
-        listOfTimers.add(MyTimer(name = "Timer6"))
-        listOfTimers.add(MyTimer(name = "Timer7"))
-        listOfTimers.add(MyTimer(name = "Timer8"))*/
+        listOfTimers.add(MyTimer(name = "Timer1", id = 1, ))
+        listOfTimers.add(MyTimer(name = "Timer2", id = 2))
+        listOfTimers.add(MyTimer(name = "Timer3", id = 3))
+        listOfTimers.add(MyTimer(name = "Timer4", id = 4))
+        listOfTimers.add(MyTimer(name = "Timer5", id = 5))
+        listOfTimers.add(MyTimer(name = "Timer6", id = 6))
+        listOfTimers.add(MyTimer(name = "Timer7", id = 7))
+        listOfTimers.add(MyTimer(name = "Timer8", id = 8))
 
 
-        adapter.timersList = listOfTimers
+        //adapter.timersList = listOfTimers
+        adapter.submitList(listOfTimers)
 
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_timers)
         recyclerView.adapter = adapter
-
 
 /*
         textViewTime = findViewById(R.id.textView_time)

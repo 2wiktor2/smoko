@@ -10,7 +10,9 @@ class TimerMapper {
             startInterval = dbModel.startInterval,
             incrementInterval = dbModel.incrementInterval,
             perPeriod = dbModel.perPeriod,
-            notification = dbModel.notification
+            notification = dbModel.notification,
+            isActive = dbModel.isActive,
+            id = dbModel.id
         )
     }
 }
