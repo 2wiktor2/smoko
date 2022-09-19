@@ -1,8 +1,8 @@
 package com.wiktor.smoko.data.database
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import com.wiktor.smoko.data.mapper.TimerMapper
-import com.wiktor.smoko.domain.MyTimer
 import com.wiktor.smoko.domain.useCases.TimersRepository
 
 class TimersListRepositoryImpl(private val application: Application) : TimersRepository {
@@ -11,8 +11,8 @@ class TimersListRepositoryImpl(private val application: Application) : TimersRep
     private val timerDao = AppDataBase.getInstance(application).timerDao()
     private val mapper = TimerMapper()
 
-    override fun getTimersList(): List<MyTimer> {
-        return timerList.toList()
+    override fun getTimersList(): List<MyTimerDbModel> {
+        return timerList
 
 /*        return Transformations.map(timerDao.getAllTamers()){
             it.map {
@@ -20,6 +20,10 @@ class TimersListRepositoryImpl(private val application: Application) : TimersRep
             }
         }*/
 
+    }
+
+    override fun addTimer(myTimerDbModel: MyTimerDbModel) {
+//        timerList.add(myTimerDbModel)
     }
 
     override fun getTimer(timerId: Int): MyTimerDbModel {
@@ -31,10 +35,6 @@ class TimersListRepositoryImpl(private val application: Application) : TimersRep
                 mapper.mapDbModelToEntity(it)
             }
         }*/
-    }
-
-    override fun addTimer(myTimerDbModel: MyTimerDbModel) {
-//        timerList.add(myTimerDbModel)
     }
 
     override fun editTimer(myTimerDbModel: MyTimerDbModel) {

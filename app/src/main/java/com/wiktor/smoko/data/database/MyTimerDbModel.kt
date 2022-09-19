@@ -17,4 +17,5 @@ data class MyTimerDbModel(
     val incrementInterval: Int = 0,
     val perPeriod: String? = "null",
     val notification: Boolean = false,
+    val isActive: Boolean = false,
 )

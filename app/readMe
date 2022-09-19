@@ -1,4 +1,6 @@
 Kotlin
 Room
 Mvvm
-CleanArchitecture
+Clean Architecture
+viewBinding
+WorkManager

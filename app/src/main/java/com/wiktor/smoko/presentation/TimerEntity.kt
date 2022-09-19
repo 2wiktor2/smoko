@@ -1,4 +1,4 @@
-package com.wiktor.smoko
+package com.wiktor.smoko.presentation
 
 import androidx.room.Entity
 

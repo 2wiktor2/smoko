@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.wiktor.smoko.R
-import com.wiktor.smoko.TimerViewModel
 
 class TimerDetailActivity : AppCompatActivity(), View.OnClickListener {
 
