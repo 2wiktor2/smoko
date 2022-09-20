@@ -13,7 +13,7 @@ import com.wiktor.smoko.presentation.adapters.TimersAdapter
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    // private lateinit var viewModel : TimerViewModel
+    private lateinit var viewModel : TimerViewModel
     private lateinit var timersAdapter: TimersAdapter
 
 
@@ -88,6 +88,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 TimersAdapter.MAX_POOL_SIZE)
             recycledViewPool.setMaxRecycledViews(TimersAdapter.VIEW_TYPE_INACTIVE,
                 TimersAdapter.MAX_POOL_SIZE)
+        }
+
+        timersAdapter.onTimerLongClickListener = object :TimersAdapter.OnTimerLongClickListener{
+            override fun onTimerLongClick(myTimer: MyTimer) {
+
+            }
+
         }
     }
 }

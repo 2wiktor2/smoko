@@ -10,6 +10,8 @@ import com.wiktor.smoko.presentation.TimersViewHolder
 
 class TimersAdapter : ListAdapter<MyTimer, TimersViewHolder>(TimerItemDiffCallback()) {
 
+    var onTimerLongClickListener: OnTimerLongClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimersViewHolder {
 
         val layout = when (viewType) {
@@ -24,6 +26,11 @@ class TimersAdapter : ListAdapter<MyTimer, TimersViewHolder>(TimerItemDiffCallba
 
     override fun onBindViewHolder(holder: TimersViewHolder, position: Int) {
         val timer = getItem(position)
+
+        holder.itemView.setOnLongClickListener {
+            onTimerLongClickListener?.onTimerLongClick(getItem(position))
+            true
+        }
 
         holder.textViewTimer.text = if (timer.isActive) {
             "RUNNING"
@@ -44,6 +51,10 @@ class TimersAdapter : ListAdapter<MyTimer, TimersViewHolder>(TimerItemDiffCallba
             VIEW_TYPE_INACTIVE
         }
 
+    }
+
+    interface OnTimerLongClickListener {
+        fun onTimerLongClick(myTimer: MyTimer)
     }
 
     companion object {

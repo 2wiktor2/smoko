@@ -13,13 +13,6 @@ class TimersListRepositoryImpl(private val application: Application) : TimersRep
 
     override fun getTimersList(): List<MyTimerDbModel> {
         return timerList
-
-/*        return Transformations.map(timerDao.getAllTamers()){
-            it.map {
-                mapper.mapDbModelToEntity(it)
-            }
-        }*/
-
     }
 
     override fun addTimer(myTimerDbModel: MyTimerDbModel) {
@@ -29,12 +22,6 @@ class TimersListRepositoryImpl(private val application: Application) : TimersRep
     override fun getTimer(timerId: Int): MyTimerDbModel {
         return timerList.find { it.id == timerId }
             ?: throw  RuntimeException("Element with id = $timerId not found")
-
-/*        return Transformations.map(timerDao.getAllTamers()){
-            it.map {
-                mapper.mapDbModelToEntity(it)
-            }
-        }*/
     }
 
     override fun editTimer(myTimerDbModel: MyTimerDbModel) {
