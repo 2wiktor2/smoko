@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wiktor.smoko.R
@@ -13,7 +14,7 @@ import com.wiktor.smoko.presentation.adapters.TimersAdapter
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var viewModel : TimerViewModel
+    private lateinit var viewModel: TimerViewModel
     private lateinit var timersAdapter: TimersAdapter
 
 
@@ -90,7 +91,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 TimersAdapter.MAX_POOL_SIZE)
         }
 
-        timersAdapter.onTimerLongClickListener = object :TimersAdapter.OnTimerLongClickListener{
+//        recyclerView.addItemDecoration(MyItemDecoration())
+        //Самый простой разделитель
+        // recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+        var itemDecoration =
+            DividerItemDecoration(this.baseContext, DividerItemDecoration.VERTICAL)
+        itemDecoration.setDrawable(getDrawable(R.drawable.divider)!!)
+        recyclerView.addItemDecoration(itemDecoration)
+
+
+
+        timersAdapter.onTimerLongClickListener = object : TimersAdapter.OnTimerLongClickListener {
             override fun onTimerLongClick(myTimer: MyTimer) {
 
             }
